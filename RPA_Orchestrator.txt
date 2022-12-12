@@ -1,0 +1,64 @@
+오케스트레이터 연결방법
+  - 전제조건 : UiPath Studio 로그인되어 있어야 함
+
+
+
+1. 오케스트레이터 접속
+  - https://cloud.uipath.com/
+  - 왼쪽 탭에서 Orchestrator 클릭 > Tenant 클릭
+  - Timezone 설정 : 왼쪽 탭에서 Tenant > 리본 Setting 메뉴 클릭해서 Seoul로 설정
+
+
+2. Machines 만들기 
+  - 리본 Machines 메뉴 클릭
+  - Add machine > Standard machine 클릭
+  - 명령프롬프트(cmd) 창에서 "hostname" 입력 후 복사한 값을 machine Name에 입력
+  - Production (Unattended)에 1 할당
+  - Provision 클릭하여 Machines 생성
+
+
+3. User 및 Group 설정
+  - 리본 Manage Access 메뉴 클릭
+  - 맨 마지막 본인 계정(혹은 이름 있는 계정)에 더보기 버튼 > Edit 클릭
+  - General Details에서 Roles - Allow to be Automation User 선택
+  - Next
+  - Unattended setup에서 Allow unattended robots to be run 체크
+  - Use a specific Windows user account 선택
+  - 명령프롬프트(cmd) 창에서 "whoami" 입력 후 복사한 값을 Domain\Username에 입력
+  - 본인 윈도우 비밀번호를 Password에 입력, 없으면 비워둠
+  - Next -> Update
+
+
+4. 수행 폴더 생성 및 설정
+  - 리본 Folder 메뉴 클릭 
+  - New Folder 버튼 클릭해서 새로운 폴더(RPA) 생성
+  - 가운데 화면에서 새로 만든 폴더 선택한 후, 오른쪽 Machines 메뉴 선택
+  - Manage Machines in Folder 클릭해서 새로 만든 머신 선택
+
+
+5. UiPath Assistant 설정
+  - Orchestrator 에서 Tenant > Machines에 새로 만든 머신키 복사
+  - UiPath Assistant(로봇) 실행 후 환경설정 메뉴 선택
+  - 왼쪽 탭에서 Orchestrator 설정 선택
+  - 로그아웃 클릭 후 연결 유형을 머신 키로 설정
+  - Orchestrator 사이트 주소에서 orchestrator_/ 까지 복사하여 URL 붙여넣기
+  - 아까 복사해둔 머신 키 붙여넣기
+  - 연결 버튼 > 로그인 버튼 클릭하여 웹사이트 로그인 후 설정 완료
+ 
+
+6. Studio 에서 배포하기
+  - 오른쪽 하단에 초록색 버튼 옆 폴더 이름 클릭해서 새로 만든 폴더(RPA) 선택
+  - 리본 게시 메뉴 클릭 후 게시 옵션에서 Orchestrator 테넌트 프로세스 피드로 게시
+  
+
+7. Orchestrator에서 실행하기
+  - Orchestrator -> Tenant -> 왼쪽 탭에서 RPA 폴더 선택 
+  - 프로세스 버튼 클릭 후 프로세스 추가 (새로 업데이트 하면 1.0.1 -> 1.0.2 이런식으로 버전이 업데이트가 됨. 사이트 다시 들어가면 업데이트가 
+가능하다는 파란 아이콘 뜸. 업데이트 하고 싶으면 프로세스 체크-> Use Latest 버튼 클릭)
+(jobs는 수행결과 확인, trigger는 스케줄 설정(실행/반복할 시간), logs는 실행한 로그 출력)
+
+(1) Trigger 스케줄 설정 
+Name 입력 후, Process Name에 방금 만든 프로세스 선택-> Timezone에서 서울로 설정-> 시간 설정(Advanced는 크론식 표현법~)
+
+(2) Logs 탭
+Write Line은 개발자용 로그, Log Message만 오케스트레이터 Logs에 출력됨
