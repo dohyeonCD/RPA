@@ -76,3 +76,5 @@ Write Line은 개발자용 로그, Log Message만 오케스트레이터 Logs에 
 add asset -> asset name에 계정 이름 적어두고, type을 credential로. global value체크-> username과 password에 해당 계정의 id, pw 입력-> 저장
 
 2. Uipath Studio에서 get credential-> 해당 폴더(RPA) 선택-> 자산 이름에 아까 만들어놓은 asset name 입력-> 출력 칸에 해당 id, pw를 받을 변수 지정
+
+3. Type Into로 id를 넣고, Type Secure Text로 pw 입력
