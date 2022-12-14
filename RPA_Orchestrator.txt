@@ -62,3 +62,17 @@ Name 입력 후, Process Name에 방금 만든 프로세스 선택-> Timezone에
 
 (2) Logs 탭
 Write Line은 개발자용 로그, Log Message만 오케스트레이터 Logs에 출력됨
+
+
+
+
+
+
+
+오케스트레이터 크레덴셜
+
+
+1. 오케스트레이터-> 해당 폴더(RPA)-> 리본 Assets 메뉴
+add asset -> asset name에 계정 이름 적어두고, type을 credential로. global value체크-> username과 password에 해당 계정의 id, pw 입력-> 저장
+
+2. Uipath Studio에서 get credential-> 해당 폴더(RPA) 선택-> 자산 이름에 아까 만들어놓은 asset name 입력-> 출력 칸에 해당 id, pw를 받을 변수 지정
